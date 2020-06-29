@@ -2,7 +2,6 @@ package fr.haan.bamprojects.data.restapi
 
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
-import org.junit.Assert.*
 import org.junit.Test
 
 class BamGithubApiClientTest {
@@ -11,7 +10,7 @@ class BamGithubApiClientTest {
     @Test
     fun api_client_returns_some_projets() {
         runBlocking {
-            val projects = client.getProjects()
+            val projects = bamGithubApiClient.getProjects()
             projects.forEach {
                 println(it)
             }

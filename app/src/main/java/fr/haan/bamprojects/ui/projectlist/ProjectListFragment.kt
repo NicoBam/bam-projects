@@ -30,12 +30,14 @@ class ProjectListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ProjectListAdapter(requireContext())
+        val adapter = ProjectListAdapter(requireContext(),onFavoriteClicked =
+        {viewModel.onFavoriteClicked(it)}
+        )
 
         binding.listView.adapter = adapter
         binding.listView.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel._projects.observe(viewLifecycleOwner, Observer { projects ->
+        viewModel.projects.observe(viewLifecycleOwner, Observer { projects ->
             // Update the cached copy of the words in the adapter.
             projects?.let { adapter.setProjects(it) }
         })

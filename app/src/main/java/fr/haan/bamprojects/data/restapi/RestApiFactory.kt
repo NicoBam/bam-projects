@@ -20,6 +20,6 @@ val webservice by lazy {
         .build().create(BamGithubApi::class.java)
 }
 
-val client by lazy {
+val bamGithubApiClient by lazy {
     BamGithubApiClient(webservice)
 }
