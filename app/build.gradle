@@ -78,5 +78,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    androidTestImplementation "android.arch.core:core-testing:1.1.1"
 
+    testImplementation "io.mockk:mockk:$mockk_version"
 }

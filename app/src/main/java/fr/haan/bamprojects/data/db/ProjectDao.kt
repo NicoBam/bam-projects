@@ -12,8 +12,8 @@ interface ProjectDao {
 
     //FIXME: Ignore Strategy keeps favorites in DB but prevent updating other fields from network
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllProjects(projects: List<Project>)
+    suspend fun insertAllProjects(projects: List<Project>)
 
     @Update
-    fun updateProject(project: Project)
+    suspend fun updateProject(project: Project)
 }

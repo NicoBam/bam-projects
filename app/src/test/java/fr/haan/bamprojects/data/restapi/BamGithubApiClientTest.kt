@@ -10,11 +10,11 @@ class BamGithubApiClientTest {
     @Test
     fun api_client_returns_some_projets() {
         runBlocking {
-            val projects = bamGithubApiClient.getProjects()
-            projects.forEach {
+            val projects = bamGithubApiClient.getProjects().invoke()
+            projects?.forEach {
                 println(it)
             }
-            Assert.assertTrue(projects.size > 0)
+            Assert.assertTrue(projects!!.size > 0)
         }
     }
 }
