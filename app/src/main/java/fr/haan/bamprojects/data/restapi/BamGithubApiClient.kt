@@ -1,7 +1,6 @@
 package fr.haan.bamprojects.data.restapi
 
 import fr.haan.bamprojects.data.model.Project
-import fr.haan.bamprojects.data.restapi.model.ApiProjects
 import fr.haan.bamprojects.data.restapi.model.ApiProjectsItem
 
 class BamGithubApiClient(val api: BamGithubApi) {
@@ -12,5 +11,5 @@ class BamGithubApiClient(val api: BamGithubApi) {
 }
 
 private fun ApiProjectsItem.toProject() : Project {
-    return Project(name = this.fullName ?: "")
+    return Project(name = this.name ?: "",description = this.description ?: "")
 }
