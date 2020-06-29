@@ -41,5 +41,11 @@ class ProjectListFragment : Fragment() {
             // Update the cached copy of the words in the adapter.
             projects?.let { adapter.setProjects(it) }
         })
+
+        binding.containerSwipeRefresh.setOnRefreshListener {
+            viewModel.refresh(onDone = {
+                binding.containerSwipeRefresh.isRefreshing = false
+            })
+        }
     }
 }

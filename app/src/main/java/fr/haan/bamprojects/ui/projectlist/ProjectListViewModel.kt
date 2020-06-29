@@ -22,10 +22,7 @@ class ProjectListViewModel : ViewModel() {
 
     init {
         projects = repository.projects()
-
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.refreshProjects()
-        }
+        refresh()
     }
 
     fun onFavoriteClicked(project: Project) {
@@ -35,6 +32,13 @@ class ProjectListViewModel : ViewModel() {
             repository.updateProject(project.copy(
                 isFavorite = toggledFavoriteValue
             ))
+        }
+    }
+
+    fun refresh(onDone: (() -> Unit)? = null) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.refreshProjects()
+            onDone?.invoke()
         }
     }
 
